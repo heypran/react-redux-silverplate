@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import {printHelloWorld} from './actions/printHelloAction';
+import {connect} from 'react-redux';
 class App extends Component {
+
+  printHelloWorld= ()=>{
+    console.log('Hello');
+    this.props.hello();
+  }
   render() {
     return (
       <div className="App">
@@ -20,9 +26,17 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <button onClick={this.printHelloWorld}>Hello World</button>
+        {this.props.message}
       </div>
     );
   }
 }
-
-export default App;
+const mATP={
+    hello:printHelloWorld 
+}
+const mapStateToProps=(state)=>{
+  console.log(` mSTP -> ${JSON.stringify(state.data)}`);
+  return {message:state.data.message}
+}
+export default connect(mapStateToProps,mATP)(App);
