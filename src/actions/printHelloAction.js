@@ -1,6 +1,9 @@
-import {PRINT_HELLO} from './index';
+//import {PRINT_HELLO} from './index';
+
+export const PRINT_HELLO = 'print:hello';
 
 export const printHelloWorld=()=>{
-    console.log("I am in hello action");
+    console.log("Hello action..");
+    //you may perform api requests here..
     return {type:PRINT_HELLO,payload:{message:'Hello World!'}};
 }
